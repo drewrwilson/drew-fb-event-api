@@ -3,8 +3,8 @@ import requests
 
 from os import environ
 
-@get('/event-attendance')
-def get_event_attendance(event_id='331218348435'):
+@get('/api')
+def get_event_attendance(event_id='1433896293509468'):
   foauth_user = environ.get('FOAUTH_USER')
   foauth_password = environ.get('FOAUTH_PASS')
 
