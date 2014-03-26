@@ -14,5 +14,10 @@ def get_event_attendance(event_id='1433896293509468'):
   if r.status_code == 200:
     event_attendees = r.json().get('data', [])
     return {'number_of_event_attendees': len(event_attendees), 'event_id': event_id}
+@get('/')
+def hello():
+  with open ("main.html", "r") as myfile:
+    data=myfile.read().replace('\n', '')
+  return data
 
 run(host='0.0.0.0', port=environ.get('PORT', 8081), reloader=True)
