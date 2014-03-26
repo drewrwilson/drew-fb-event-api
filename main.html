@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Worcester VegFest 2014</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>
+
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="./bootstrap/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-countdown/1.6.3/jquery.countdown.min.js"></script>
+    <style type="text/css" media="screen">
+      body {
+        background:url('http://vegfest.org/wp-content/uploads/2012/11/vegfest-bg.jpg');
+        background-size:cover;
+        background-repeat:no-repeat;
+      }
+      #big-ass-number-of-attendees {
+        font-size:260px;
+        color:#ddd;
+        text-shadow: 2px 2px #000;
+      }
+      .overlay{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background-color: rgba(0,0,0,0.4); /*dim the background*/
+      }
+      h1, h2, a {
+        color:#f2f2f2;
+        text-shadow: 2px 2px #000;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <div class="overlay"></div>
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2 text-center"><div id="defaultCountdown"></div></div>
+      </div> <!-- /row -->
+      <div class="row">
+        <div class="col-sm-10 col-sm-offset-1 text-center">
+          <h1 class="background-highlight">How many people are have RSVPed to <a href="https://www.facebook.com/events/1433896293509468/">Worcester VegFest</a> on facebook?</h2>
+          <div id="big-ass-number-of-attendees"></div>
+          <h2>Sunday April 6, 2014 from 11am-5pm at the DCU center</h2>
+          <div id="facebook" class="text-center">
+            <a href="https://www.facebook.com/events/1433896293509468/">
+              <img src="http://i.imgur.com/UkRKgJV.png" alt="RSVP to VegFest on Facebook" style="max-width:100px"/>
+            </a>
+          </div>
+      </div>
+      </div>
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+  </body>
+  <script type="text/javascript" charset="utf-8">
+        var event_attendees;
+       $(document).ready(function() {
+         $('#big-ass-number-of-attendees').html('<img src="http://i.imgur.com/WqExtZT.gif" style="max-height:150px" />');
+
+        var jqxhr = $.getJSON( "./api", function(data) {
+          console.log( "success" );
+          event_attendees = data['number_of_event_attendees'];
+          $('#big-ass-number-of-attendees').html(event_attendees);
+        })
+        .done(function() {
+          console.log( "second success" );
+        })
+        .fail(function() {
+          console.log( "error" );
+        })
+        .always(function() {
+          console.log( "complete" );
+        });
+    });
+
+  </script>
+</html>
