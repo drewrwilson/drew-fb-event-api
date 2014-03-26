@@ -44,7 +44,7 @@
         z-index: -1;
         background-color: rgba(0,0,0,0.4); /*dim the background*/
       }
-      h1, h2, a {
+      h1, h2, h3, h4, a {
         color:#f2f2f2;
         text-shadow: 2px 2px #000;
       }
@@ -61,12 +61,15 @@
         <div class="col-sm-10 col-sm-offset-1 text-center">
           <h1 class="background-highlight">How many people are have RSVPed to <a href="https://www.facebook.com/events/1433896293509468/">Worcester VegFest</a> on facebook?</h2>
           <div id="big-ass-number-of-attendees"></div>
-          <h2>Sunday April 6, 2014 from 11am-5pm at the DCU center</h2>
+<h2>And this year we're expecting <span id="expecting">a lot of</span> attendees.</h2>
+          <h4>(In previous years, we've found that our actual attendees at the event is usually about 5-10 times the attendees on the facebook event.)</h4>
+          <h1>VegFest is on Sunday April 6, 2014 from 11am-5pm at the DCU center</h1>
           <div id="facebook" class="text-center">
             <a href="https://www.facebook.com/events/1433896293509468/">
               <img src="http://i.imgur.com/UkRKgJV.png" alt="RSVP to VegFest on Facebook" style="max-width:100px"/>
             </a>
           </div>
+
       </div>
       </div>
 
@@ -85,6 +88,7 @@
           console.log( "success" );
           event_attendees = data['number_of_event_attendees'];
           $('#big-ass-number-of-attendees').html(event_attendees);
+          $('#expecting').html(event_attendees * 8);
         })
         .done(function() {
           console.log( "second success" );
